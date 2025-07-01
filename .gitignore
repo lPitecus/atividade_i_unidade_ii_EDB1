@@ -1,6 +1,5 @@
 .venv/
-.bin/*
+.bin/
 *.png
 *.csv
-.o
-*.exe
+.vscode/

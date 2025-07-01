@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Script refatorado para automatizar todo o fluxo do projeto,
-# incluindo a criação e gerenciamento de um ambiente virtual Python.
+# Script refatorado para usar o Makefile para compilação e gerenciar
+# o ambiente virtual Python.
 #
-# O comando 'set -e' garante que o script pare imediatamente se qualquer
-# um dos comandos falhar.
+# 'set -e' garante que o script pare imediatamente se qualquer comando falhar.
 set -e
 
 # Nome do diretório do ambiente virtual
@@ -15,9 +14,12 @@ echo "    INICIANDO WORKFLOW DE ANÁLISE DE ALGORITMOS   "
 echo "=================================================="
 echo ""
 
-# ETAPA 1: Compilar o código-fonte C++
-echo "==> ETAPA 1: Compilando o código C++ de 'src/'..."
-g++ -std=c++17 -O2 src/*.cpp -o bin/analysis_app
+# ETAPA 1: Compilar o código-fonte C++ usando o Makefile
+echo "==> ETAPA 1: Compilando o código C++ usando o Makefile..."
+# Limpa qualquer build anterior para garantir uma compilação nova.
+make clean
+# Executa a compilação.
+make
 echo "--> Compilação C++ concluída com sucesso!"
 echo ""
 
@@ -54,7 +56,7 @@ python3 analysis/analyze_results.py
 echo "--> Geração de gráficos concluída!"
 echo ""
 
-# Desativa o ambiente virtual ao final do script (boa prática)
+# Desativa o ambiente virtual ao final do script
 deactivate
 
 echo "=================================================="
