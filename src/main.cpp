@@ -16,7 +16,7 @@ struct TestConfig {
 
 int main() {
     // Abre (ou cria) o arquivo para salvar os resultados
-    std::ofstream outputFile("../results/raw_data.csv");
+    std::ofstream outputFile("results/raw_data.csv");
     if (!outputFile.is_open()) {
         std::cerr << "Erro ao abrir o arquivo de resultados!" << std::endl;
         return 1;
